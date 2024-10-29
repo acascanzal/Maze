@@ -1,0 +1,242 @@
+/* CSS by Alain Cascán */
+/* Colors by Coolors.co */
+
+:root {
+    --light-cold: #8ecae6;
+    --dark-cold: #219ebc; 
+    --light-warm: #ffb703;
+    --dark-warm: #fb8500;
+    --dark: #023047;   
+    --light: #eeeeee;  
+}
+
+html, body{
+    height: 100%;  /* Sets the height of the html and body elements to 100% */
+}
+
+* {
+    font-family: 'Courier New', Courier, monospace;  /* Sets the font for all elements */
+}
+
+body {
+    display: flex;  /* Makes the body a flex container */
+    flex-direction: column;  /* Sets the direction of the flex container to column */
+}
+
+main {
+    flex-grow: 1; /* Makes the main element grow to fill the available space */
+}
+
+div {
+    margin: auto; 
+    max-width: 500px;  /* Sets a maximum width of 500px for the div */
+}
+
+header, footer {
+    background-color: var(--dark-cold);  /* Sets the background color using the dark-cold variable */
+
+}
+
+.header, .footer, .main{
+    padding: 1em 0;  /* Sets padding of 1em on the top and bottom */
+}
+
+fieldset {
+    border-radius: 5px;  /* Sets a border radius of 5px */
+    border-color: var(--light-cold);
+    padding: 1em;  /* Sets padding of 1em */
+    position: relative;
+
+}
+
+
+
+
+.row {
+    float: left; /* Floats the row elements to the left, allowing them to sit next to each other horizontally */
+    width: 100%; /* Sets the width of the row elements to 100% of their containing element */
+}
+
+.row > div {
+    width: calc(100% / 7.0); /* Sets the width of each child div to 1/7th of the row's width, creating a grid of 7 columns */
+    float: left; /* Floats the child divs to the left, allowing them to sit next to each other horizontally */
+}
+
+.square-holder {
+    position: relative; /* Sets the position of the square-holder to relative, which allows absolutely positioned children to be positioned relative to this element */
+    
+}
+
+.square-sizer {
+    padding-top: 100%; /* Sets the padding-top to 100% of the width, maintaining a square aspect ratio */
+}
+
+.square-content{
+    position: absolute; /* Sets the position of the walkeable element to absolute, allowing it to be positioned relative to the nearest positioned ancestor (square-holder) */
+    top: 0; /* Positions the top edge of the walkeable element at the top of its containing element */
+    right: 0; /* Positions the right edge of the walkeable element at the right of its containing element */
+    bottom: 0; /* Positions the bottom edge of the walkeable element at the bottom of its containing element */
+    left: 0; /* Positions the left edge of the walkeable element at the left of its containing element */
+}
+
+.unknow {
+    background-color: var(--light-warm);
+   
+}
+
+.walkeable {
+    background-color: var(--light);
+}
+
+.wall {
+    background-color: var(--dark-warm);
+}
+
+.player, .target, .up, .down, .left, .right {
+    width: 100%;
+    height: 100%;
+    background-size: 600% 100%; /* Sets the background size to 600% width and 100% height, dividing the sprite into 6 equal parts horizontally */
+    background-image: url(img/symbols.svg);
+}
+
+.player {
+    background-position: 0% 0%; /* Positions the background to show the first image in the sprite */
+}
+
+.target {
+    background-position: 20% 0%; /* Positions the background to show the second image in the sprite */
+}
+
+.size-bar{
+    clear: both; /* Clears the float property on both sides of the size-bar element due to the field*/
+    text-align: center; /* Aligns the text in the size-bar to the center */
+    padding-top: 2em;
+}
+
+.size-bar > button {
+    width: 8em; /* Sets the width of the buttons to 5em */
+    height: 5em;
+    margin-left: 0.2em; /* Sets a margin of 0.5em on the left side of the buttons */
+
+}
+
+.size-bar > button:hover {
+    background-color: var(--light-warm); /* Changes the background color of the size-bar when hovered */
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the buttons */
+}
+
+.control-holder{
+    background-color: var(--light-warm);
+    width: 10em; /* Sets the width of the control-holder to 10em */
+    height: 10em;
+}
+
+
+
+.direction-arrow{
+    cursor: pointer;
+}
+
+.direction-arrow:hover{
+    background-color: var(--dark-warm);
+}
+
+.direction-arrow, .direction-spacer {
+    width: calc((100% / 3.0) - 2px); /* Sets the width of the direction-arrow and direction-spacer elements to 1/3rd of the container width, minus 2px for the border */
+    height: calc((100% / 3.0) - 2px); /* Sets the height of the direction-arrow and direction-spacer elements to 1/3rd of the container height, minus 2px for the border */
+    float: left;
+}
+
+.up{
+    background-position: 40% 0%;
+}
+
+.down{
+    background-position: 80% 0%;
+}
+
+.left{
+    background-position: 100% 0%;
+
+}
+
+.right{
+    background-position: 60% 0%;
+
+
+}
+
+
+.overlay { /*This class is used to darken the background*/
+    all: unset; /* Removes all styles from the overlay element due to the max-width for the div elements*/
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    
+}
+
+.popup {
+    position: fixed;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    width: 18em;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transform: translate(-50%, -50%); /*Centers the popup in the middle of the screen */
+}
+
+.popup > div {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.popup button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #0056b3;
+}
+
+#communicationP{
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--dark);
+    overflow: auto;
+}
+
+@media (orientation: landscape) {
+    div{
+        max-width: 80%; /* Sets a maximum width of 80% for the div */
+    }
+    .square-sizer, .square-content{
+        max-width: 100%; /* Sets a maximum width of 100% for the square-sizer and square-content elements since if not it breaks the width and the maze doesnt seems good*/
+    }
+    .control-holder *{
+        max-width: 100%; /* Sets a maximum width of 100% for the control-holder elements, as in the previous one*/
+    }
+    .main{
+        display: flex; /* Makes the main element a flex container */
+        justify-content: space-between; /* Aligns the main element's children with space between them */
+        
+    }
+    .main fieldset{
+        flex-grow: 1; /* Makes the fieldset elements grow to fill the available space */
+        margin-left: 2em; /* Sets a margin of 2em on the left side of the fieldset elements */
+    }
+
+}
